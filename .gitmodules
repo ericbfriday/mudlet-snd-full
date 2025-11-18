@@ -1,0 +1,3 @@
+[submodule "mudlet-snd"]
+	path = mudlet-snd
+	url = https://github.com/mudlet/mudlet-snd.git
