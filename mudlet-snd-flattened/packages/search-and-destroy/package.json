@@ -1,0 +1,17 @@
+{
+  "name": "@mudlet-snd/search-and-destroy",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "nx build",
+    "test": "nx test",
+    "lint": "prettier --check ."
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/js": "22.0.4",
+    "@nx/workspace": "22.0.4",
+    "prettier": "^2.6.2",
+    "typescript": "~5.9.2"
+  }
+}
