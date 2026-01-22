@@ -178,16 +178,16 @@ permAlias("^xrt (.+)$", [[SnD.Mapper.xrunto(matches[2])]])
 ### Success Criteria:
 
 #### Automated Verification:
-- [ ] Package builds successfully: `nx build`
-- [ ] Lua syntax validation passes
-- [ ] Core mapper functions load without errors
-- [ ] Area start room persistence works across restarts
+- [x] Package builds successfully: `nx build`
+- [x] Lua syntax validation passes
+- [x] Core mapper functions load without errors
+- [x] Area start room persistence works across restarts
 
 #### Manual Verification:
-- [ ] `snd setstart` successfully marks current room as area start
-- [ ] `xrunto <area>` navigates to marked start room
-- [ ] Error messages display for unmapped areas
-- [ ] Start room data persists after Mudlet restart
+- [x] `snd setstart` successfully marks current room as area start
+- [x] `xrunto <area>` navigates to marked start room
+- [x] Error messages display for unmapped areas
+- [x] Start room data persists after Mudlet restart
 
 ---
 

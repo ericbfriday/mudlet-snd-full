@@ -11,5 +11,12 @@
         "mcp"
       ]
     }
+  },
+  "tools": {
+    "truncateToolOutputLines": 2000,
+    "enableMessageBusIntegration": true
+  },
+  "general": {
+    "previewFeatures": true
   }
 }

@@ -3,7 +3,7 @@ type: feature
 priority: high
 created: 2025-11-18T10:30:00Z
 created_by: Opus
-status: planned
+status: implemented
 tags: [migration, mudlet, aardwolf, snd, evaluation, workflow]
 keywords: [Search and Destroy, Mudlet, MUSHclient, migration, GMCP, mapper, xrunto, qw, hunt trick, auto hunt, campaign management, Aardwolf MUD]
 patterns: [GMCP event handling, mapper API integration, SQLite persistence, Geyser UI framework, trigger parsing, command aliasing, speedwalk navigation, area start room management]
