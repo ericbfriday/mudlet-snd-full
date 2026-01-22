@@ -1,0 +1,503 @@
+{
+  "projectName": "Mudlet Search and Destroy",
+  "generatedAt": "2026-01-21T00:00:00Z",
+  "description": "Comprehensive port of the Aardwolf Search and Destroy plugin to Mudlet, implementing type-safe Lua code with modern development practices using Nx monorepo architecture",
+  "version": "1.0.0",
+  "structure": {
+    "root": "mudlet-snd",
+    "mainWorkspace": "mudlet-snd",
+    "flattenedWorkspace": "mudlet-snd-flattened",
+    "originalSources": "snd-original",
+    "documentation": "thoughts",
+    "aiIntegration": ".opencode"
+  },
+  "statistics": {
+    "totalLuaFiles": 34,
+    "totalXMLFiles": 14,
+    "totalMarkdownDocs": 33,
+    "mainImplementationFiles": 20,
+    "flattenedImplementationFiles": 16,
+    "estimatedLinesOfCode": 2500,
+    "mainImplementationSize": "~50KB",
+    "flattenedImplementationSize": "~23KB"
+  },
+  "entryPoints": {
+    "main": [
+      {
+        "type": "core",
+        "path": "mudlet-snd/packages/search-and-destroy/src/core.lua",
+        "size": "6.7KB",
+        "description": "Global namespace, compatibility layer, initialization"
+      },
+      {
+        "type": "database",
+        "path": "mudlet-snd/packages/search-and-destroy/src/database.lua",
+        "size": "14KB",
+        "description": "SQLite persistence layer with full CRUD operations"
+      },
+      {
+        "type": "mapper",
+        "path": "mudlet-snd/packages/search-and-destroy/src/mapper.lua",
+        "size": "1.4KB",
+        "description": "Mudlet mapper integration and pathfinding"
+      },
+      {
+        "type": "gmcp",
+        "path": "mudlet-snd/packages/search-and-destroy/src/gmcp.lua",
+        "size": "711 bytes",
+        "description": "Game data event handlers"
+      },
+      {
+        "type": "config",
+        "path": "mudlet-snd/packages/search-and-destroy/src/config_manager.lua",
+        "size": "6.4KB",
+        "description": "Advanced configuration management"
+      }
+    ],
+    "flattened": [
+      {
+        "type": "core",
+        "path": "mudlet-snd-flattened/packages/search-and-destroy/src/core.lua",
+        "size": "6.7KB",
+        "description": "Same structure as main implementation"
+      },
+      {
+        "type": "database",
+        "path": "mudlet-snd-flattened/packages/search-and-destroy/src/database.lua",
+        "size": "2.6KB",
+        "description": "Simplified database implementation"
+      }
+    ],
+    "tests": [
+      {
+        "type": "phase1",
+        "path": "mudlet-snd/packages/search-and-destroy/src/test_phase1_comprehensive.lua",
+        "size": "1.9KB",
+        "description": "Phase 1 comprehensive mapper tests"
+      },
+      {
+        "type": "phase2",
+        "path": "mudlet-snd/packages/search-and-destroy/src/test_phase2_enhanced.lua",
+        "size": "3.2KB",
+        "description": "Phase 2 enhanced database and GMCP tests"
+      },
+      {
+        "type": "mock",
+        "path": "mudlet-snd/packages/search-and-destroy/src/mock_data.lua",
+        "size": "12KB",
+        "description": "Comprehensive test data framework"
+      }
+    ]
+  },
+  "coreModules": [
+    {
+      "name": "Core System",
+      "path": "src/core.lua",
+      "size": "6.7KB",
+      "namespace": "SnD",
+      "version": "1.0.0",
+      "exports": [
+        "SnD",
+        "Mudlet API compatibility layer",
+        "Mock functions for testing"
+      ],
+      "dependencies": [
+        "raiseEvent",
+        "cecho",
+        "walkTo",
+        "registerAnonymousEventHandler",
+        "setAreaUserData",
+        "getAllAreaUserData",
+        "getRoomArea",
+        "getRoomAreaName",
+        "getAreaTable"
+      ]
+    },
+    {
+      "name": "Database Layer",
+      "path": "src/database.lua",
+      "size": "14KB",
+      "exports": [
+        "SnD.Database.init",
+        "SnD.Database.saveCampaignTargets",
+        "SnD.Database.loadCampaignTargets",
+        "SnD.Database.saveAreaStart",
+        "SnD.Database.loadAreaStarts",
+        "SnD.Database.saveConfig",
+        "SnD.Database.loadConfig"
+      ],
+      "schema": {
+        "targets": ["id", "name", "area", "room_id", "mob_vnum", "created_at"],
+        "area_starts": ["area_id", "area_name", "start_room_id", "created_at"],
+        "config": ["key", "value", "updated_at"]
+      }
+    },
+    {
+      "name": "Mapper Integration",
+      "path": "src/mapper.lua",
+      "size": "1.4KB",
+      "exports": [
+        "SnD.Mapper.setStartRoom",
+        "SnD.Mapper.xrunto"
+      ],
+      "purpose": "Room navigation and area-based routing"
+    },
+    {
+      "name": "GMCP Handler",
+      "path": "src/gmcp.lua",
+      "size": "711 bytes",
+      "exports": [
+        "GMCP event handlers"
+      ],
+      "purpose": "Game event processing and room updates"
+    },
+    {
+      "name": "Campaign Management",
+      "path": "src/campaign.lua",
+      "size": "1.3KB",
+      "exports": [
+        "Campaign tracking functions"
+      ],
+      "purpose": "Target tracking and quest progression"
+    },
+    {
+      "name": "GUI Components",
+      "files": [
+        {
+          "name": "Main GUI",
+          "path": "src/gui.lua",
+          "size": "1.2KB"
+        },
+        {
+          "name": "Campaign GUI",
+          "path": "src/campaign_gui.lua",
+          "size": "995 bytes"
+        },
+        {
+          "name": "Buttons",
+          "path": "src/buttons.lua",
+          "size": "1.1KB"
+        }
+      ]
+    },
+    {
+      "name": "Hunting System",
+      "path": "src/hunt.lua",
+      "size": "1.9KB",
+      "purpose": "Target location, navigation, and path optimization"
+    },
+    {
+      "name": "Support Modules",
+      "files": [
+        {
+          "name": "Quick Where",
+          "path": "src/quick_where.lua",
+          "size": "1.4KB"
+        },
+        {
+          "name": "Realtime",
+          "path": "src/realtime.lua",
+          "size": "938 bytes"
+        },
+        {
+          "name": "Aliases",
+          "path": "src/aliases.lua",
+          "size": "996 bytes"
+        },
+        {
+          "name": "Config Manager",
+          "path": "src/config_manager.lua",
+          "size": "6.4KB"
+        }
+      ]
+    }
+  ],
+  "configuration": {
+    "workspace": [
+      {
+        "file": "nx.json",
+        "purpose": "Monorepo build orchestration"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "purpose": "TypeScript base configuration"
+      },
+      {
+        "file": "tsconfig.json",
+        "purpose": "TypeScript compilation settings"
+      },
+      {
+        "file": "package.json",
+        "purpose": "Dependencies and scripts"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "purpose": "PNPM workspace definition"
+      }
+    ],
+    "buildCI": [
+      {
+        "file": ".github/workflows/ci.yml",
+        "purpose": "GitHub Actions CI/CD pipeline"
+      },
+      {
+        "file": "project.json",
+        "purpose": "Nx project configuration"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "purpose": "Dependency version locking"
+      }
+    ],
+    "ide": [
+      {
+        "file": ".vscode/extensions.json",
+        "purpose": "VSCode recommended extensions"
+      },
+      {
+        "file": ".gemini/settings.json",
+        "purpose": "Gemini AI assistant settings"
+      },
+      {
+        "file": ".serena/project.yml",
+        "purpose": "Serena project metadata"
+      }
+    ]
+  },
+  "documentation": {
+    "project": [
+      {
+        "file": "README.md",
+        "location": "root",
+        "topic": "Project overview"
+      },
+      {
+        "file": "mudlet-snd/README.md",
+        "location": "main workspace",
+        "topic": "Nx workspace guide"
+      },
+      {
+        "file": "mudlet-snd-flattened/README.md",
+        "location": "flattened workspace",
+        "topic": "Flattened workspace guide"
+      },
+      {
+        "file": "AGENTS.md",
+        "location": "root",
+        "topic": "Agent configurations"
+      }
+    ],
+    "technical": [
+      {
+        "file": "Porting Aardwolf Search and Destroy.md",
+        "author": "Claude",
+        "topic": "Analysis of porting challenges"
+      },
+      {
+        "file": "Search_and_Destroy_Mudlet_Port_Analysis.md",
+        "author": "Gemini",
+        "topic": "Deep research on porting"
+      }
+    ],
+    "planning": {
+      "research": [
+        "2025-11-18_migration_workflow_research.md",
+        "phase2_data_storage_analysis.md"
+      ],
+      "plans": [
+        "2025-11-18_migration_workflow_implementation.md",
+        "phase2_data_storage_implementation.md"
+      ],
+      "tickets": [
+        "feature_migration_workflow.md",
+        "phase2_data_storage_implementation.md"
+      ]
+    },
+    "original": [
+      {
+        "file": "Search-and-Destroy-master/README.md",
+        "topic": "Original project documentation"
+      },
+      {
+        "file": "Search-and-Destroy-master/CREDIT.md",
+        "topic": "Attribution and credits"
+      },
+      {
+        "file": "Search-and-Destroy-master/ReleaseChecklist.md",
+        "topic": "Release process"
+      }
+    ]
+  },
+  "dependencies": {
+    "runtime": [
+      {
+        "name": "Mudlet",
+        "version": "Lua 5.1+",
+        "purpose": "MUD client runtime environment"
+      },
+      {
+        "name": "Mudlet Mapper",
+        "purpose": "Built-in mapping system"
+      },
+      {
+        "name": "GMCP",
+        "purpose": "Game communication protocol"
+      },
+      {
+        "name": "SQLite",
+        "purpose": "Database via Mudlet's db module"
+      }
+    ],
+    "development": [
+      {
+        "name": "Nx",
+        "version": "22.0.4",
+        "purpose": "Monorepo management"
+      },
+      {
+        "name": "TypeScript",
+        "version": "5.9.2",
+        "purpose": "Type checking"
+      },
+      {
+        "name": "SWC",
+        "version": "1.5.7",
+        "purpose": "Fast compilation"
+      },
+      {
+        "name": "Prettier",
+        "version": "2.6.2",
+        "purpose": "Code formatting"
+      },
+      {
+        "name": "PNPM",
+        "purpose": "Package management"
+      }
+    ],
+    "ai": [
+      {
+        "name": "OpenCode AI SDK",
+        "purpose": "Development assistance"
+      },
+      {
+        "name": "Zod",
+        "purpose": "Schema validation"
+      }
+    ]
+  },
+  "developmentPhases": [
+    {
+      "phase": 1,
+      "name": "Core Mapper Logic",
+      "status": "complete",
+      "features": [
+        "Area-based navigation",
+        "Room tracking",
+        "Basic pathfinding"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Data Storage & GMCP",
+      "status": "in_progress",
+      "features": [
+        "SQLite database integration",
+        "Campaign target persistence",
+        "GMCP event handlers",
+        "Mock data framework"
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Campaign Management",
+      "status": "planned",
+      "features": [
+        "Full campaign workflow",
+        "Target tracking UI",
+        "Quest integration"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Advanced Features",
+      "status": "planned",
+      "features": [
+        "Real-time updates",
+        "Quick where functionality",
+        "Hunt optimization"
+      ]
+    }
+  ],
+  "testCoverage": {
+    "files": {
+      "phase1": {
+        "count": 1,
+        "size": "1.9KB"
+      },
+      "phase2": {
+        "count": 1,
+        "size": "3.2KB"
+      },
+      "testFunctions": {
+        "count": 1,
+        "size": "1.9KB"
+      },
+      "mockData": {
+        "count": 2,
+        "sizes": ["12KB", "2.3KB"]
+      }
+    },
+    "areas": [
+      {
+        "area": "Core mapper logic",
+        "status": "complete",
+        "phase": 1
+      },
+      {
+        "area": "Database persistence",
+        "status": "in_progress",
+        "phase": 2
+      },
+      {
+        "area": "GMCP integration",
+        "status": "in_progress",
+        "phase": 2
+      },
+      {
+        "area": "Mock data framework",
+        "status": "complete",
+        "phase": 2
+      }
+    ]
+  },
+  "quickStart": {
+    "setup": "cd mudlet-snd && pnpm install",
+    "build": "npx nx build search-and-destroy",
+    "test": "lua dofile(\"packages/search-and-destroy/src/test_phase2_enhanced.lua\")",
+    "graph": "npx nx graph"
+  },
+  "keyFiles": {
+    "activeDevelopment": [
+      "mudlet-snd/packages/search-and-destroy/src/database.lua",
+      "mudlet-snd/packages/search-and-destroy/src/config_manager.lua",
+      "mudlet-snd/packages/search-and-destroy/src/mock_data.lua",
+      "mudlet-snd/packages/search-and-destroy/src/core.lua"
+    ],
+    "reference": [
+      "snd-original/Search-and-Destroy-master/Search_and_Destroy.xml",
+      "snd-original/WinkleWinkle_Search_Destroy_2.xml"
+    ],
+    "planning": [
+      "thoughts/tickets/phase2_data_storage_implementation.md",
+      "thoughts/plans/phase2_data_storage_implementation.md",
+      "thoughts/research/phase2_data_storage_analysis.md"
+    ]
+  },
+  "metadata": {
+    "indexSize": "~10KB",
+    "lastUpdated": "2026-01-21",
+    "tokenEfficiency": "94%",
+    "estimatedFullCodebase": "58000 tokens",
+    "indexReadCost": "3000 tokens"
+  }
+}
